@@ -1,4 +1,12 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { CityService } from './city.service';
 
 @Controller('city')
-export class CityController {}
+export class CityController {
+  constructor(private cityService: CityService) {}
+
+  @Get()
+  getCities() {
+    return this.cityService.getCities();
+  }
+}
