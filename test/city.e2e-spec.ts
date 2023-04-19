@@ -2,10 +2,7 @@ import * as request from 'supertest';
 import { Test, TestingModule } from '@nestjs/testing';
 import { AppModule } from '../src/app.module';
 import { INestApplication } from '@nestjs/common';
-import {
-  CITIES_COUNT,
-  MAX_CITIES_COUNT_RETURNED,
-} from '../src/city/city.service';
+import { CITIES_COUNT } from '../src/city/city.service';
 
 describe('CityController (e2e)', () => {
   let app: INestApplication;
@@ -28,7 +25,7 @@ describe('CityController (e2e)', () => {
       .get('/cities')
       .expect(200)
       .then((res) => {
-        expect(res.body).toHaveLength(MAX_CITIES_COUNT_RETURNED);
+        expect(res.body).toHaveLength(CITIES_COUNT);
         done();
       });
   });

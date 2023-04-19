@@ -4,7 +4,6 @@ import { validateDto } from '../utils/validation/validate-dto';
 import { plainToInstance } from 'class-transformer';
 import * as fs from 'fs';
 
-export const MAX_CITIES_COUNT_RETURNED = 1000;
 export const CITIES_COUNT = 209557;
 
 @Injectable()
@@ -23,10 +22,7 @@ export class CityService {
   }
 
   getCities(): CityDto[] {
-    return this.cities.slice(
-      0,
-      Math.min(this.cities.length, MAX_CITIES_COUNT_RETURNED),
-    );
+    return this.cities;
   }
 
   getCitiesCount(): number {
