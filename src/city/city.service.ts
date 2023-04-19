@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { CityDto } from './dto/city.dto';
 import { validateDto } from '../utils/validation/validate-dto';
 import { plainToInstance } from 'class-transformer';
@@ -8,17 +8,12 @@ export const CITIES_COUNT = 209557;
 
 @Injectable()
 export class CityService {
+  private logger = new Logger(CityService.name);
+
   private cities: CityDto[];
 
   constructor() {
-    this.cities = plainToInstance(
-      CityDto,
-      JSON.parse(fs.readFileSync('./data/cities.json', 'utf8')) as [],
-    );
-
-    this.cities.forEach((value) => {
-      validateDto(value, CityDto.name);
-    });
+    this.loadCitiesFromJson();
   }
 
   getCities(): CityDto[] {
@@ -27,5 +22,20 @@ export class CityService {
 
   getCitiesCount(): number {
     return this.cities.length;
+  }
+
+  private loadCitiesFromJson() {
+    this.logger.log('Load cities from JSON');
+
+    this.cities = plainToInstance(
+      CityDto,
+      JSON.parse(fs.readFileSync('./data/cities.json', 'utf8')) as [],
+    );
+
+    this.cities.forEach((value) => {
+      validateDto(value, CityDto.name);
+    });
+
+    this.logger.log(`Cities are loaded. Total count ${this.cities.length} `);
   }
 }
