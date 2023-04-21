@@ -1,5 +1,9 @@
 # nest-city-search
 
+Nest project where user can search a city based on its name.
+
+Swagger can be access at "/api".
+
 ## Installation
 
 ```bash

@@ -22,7 +22,7 @@ describe('CityController (e2e)', () => {
 
   it('/cities (GET)', (done) => {
     request(app.getHttpServer())
-      .get('/cities')
+      .get('/api/v1/cities')
       .expect(200)
       .then((res) => {
         expect(res.body).toHaveLength(CITIES_COUNT);
@@ -32,7 +32,7 @@ describe('CityController (e2e)', () => {
 
   it('/cities/count (GET)', (done) => {
     request(app.getHttpServer())
-      .get('/cities/count')
+      .get('/api/v1/cities/count')
       .then((res) => {
         expect(res.text).toEqual(CITIES_COUNT.toString());
         done();
