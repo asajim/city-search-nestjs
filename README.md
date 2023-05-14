@@ -1,8 +1,11 @@
-# nest-city-search
+# city-search-nestjs
 
 Nest project where user can search a city based on its name using binary-search algorithm.
+Cities are loaded from a static [JSON file](./data/cities.json).
 
 Swagger can be access at "/api".
+
+There's also a FE project that can be accessed [here](https://github.com/asajim/city-search-nextjs).
 
 ## Getting Started
 
@@ -29,7 +32,6 @@ Swagger can be access at "/api".
     * TypeScript support
     * Supports for various tools, such as Swagger, GraphQL, TypeORM, etc.
 * [TypeScript](https://www.typescriptlang.org/)
-* [PostgreSQL](https://www.postgresql.org/)
 
 ## Further Improvement
 
