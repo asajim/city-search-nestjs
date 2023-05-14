@@ -1,7 +1,7 @@
-import { CoordinateDto } from '../city/dto/coordinate.dto';
-import { NOT_FOUND_INDEX, SearchUtil } from './search-util';
+import { CoordinateDto } from './dto/coordinate.dto';
+import { NOT_FOUND_INDEX, CitySearchUtil } from './city-search-util.service';
 import 'reflect-metadata';
-import { CityDto } from '../city/dto/city.dto';
+import { CityDto } from './dto/city.dto';
 
 describe('SearchUtil', () => {
   let cities: CityDto[] = [];
@@ -39,7 +39,7 @@ describe('SearchUtil', () => {
     'Enschede',
     'Franeker',
   ];
-  const searchUtil = new SearchUtil();
+  const searchUtil = new CitySearchUtil();
 
   beforeAll(() => {
     cities = cityNames.map((value, index) => {

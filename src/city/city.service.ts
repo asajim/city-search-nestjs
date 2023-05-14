@@ -3,14 +3,13 @@ import { CityDto } from './dto/city.dto';
 import { validateDto } from '../utils/validation/validate-dto';
 import { plainToInstance } from 'class-transformer';
 import * as fs from 'fs';
-import { SearchUtil } from '../utils/search-util';
+import { CitySearchUtil } from './city-search-util.service';
 
 export const CITIES_COUNT = 209557;
 
 @Injectable()
 export class CityService {
   private logger = new Logger(CityService.name);
-  private searchUtil = new SearchUtil();
 
   /**
    * List of sorted cities ascending based on its name
@@ -18,7 +17,7 @@ export class CityService {
    */
   private cities: CityDto[];
 
-  constructor() {
+  constructor(private searchUtil: CitySearchUtil) {
     this.loadCitiesFromJson();
   }
 

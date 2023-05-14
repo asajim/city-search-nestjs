@@ -1,10 +1,11 @@
-import { CityDto } from '../city/dto/city.dto';
-import { Logger } from '@nestjs/common';
+import { CityDto } from './dto/city.dto';
+import { Injectable, Logger } from '@nestjs/common';
 
 export const NOT_FOUND_INDEX = -1;
 
-export class SearchUtil {
-  private logger = new Logger(SearchUtil.name);
+@Injectable()
+export class CitySearchUtil {
+  private logger = new Logger(CitySearchUtil.name);
 
   /**
    * Search city's name based on [name] using binary search
